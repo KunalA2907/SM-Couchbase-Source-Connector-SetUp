@@ -1,0 +1,45 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Connect
+metadata:
+  name: connect-demo
+  namespace: confluent 
+spec:
+  replicas: 1
+  configOverrides:
+    server:
+      - connector.client.config.override.policy=All
+  image:
+    application: confluentinc/cp-server-connect:7.7.0
+    init: confluentinc/confluent-init-container:2.9.0
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: confluentHub
+        confluentHub:
+          - name: kafka-connect-datagen
+            owner: confluentinc
+            version: 0.6.0
+          - name: kafka-connect-couchbase
+            owner: couchbase
+            version: 4.2.3
+  dependencies:
+    kafka:
+      bootstrapEndpoint: pkc-921jm.us-east-2.aws.confluent.cloud:9092
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: cluster-demo-credentials
+      tls:
+        enabled: true
+        ignoreTrustStoreConfig: true
+    schemaRegistry:
+      url: https://psrc-l6oz3.us-east-2.aws.confluent.cloud
+      authentication:
+        type: basic
+        basic:
+          secretRef: ccloud-sr-credentials
+
+
+
+      

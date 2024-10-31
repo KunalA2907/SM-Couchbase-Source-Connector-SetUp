@@ -1,0 +1,33 @@
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: Connector
+metadata:
+  name: test-couchbase-source
+  namespace: confluent
+spec:
+  class: "com.couchbase.connect.kafka.CouchbaseSourceConnector"
+  taskMax: 1
+  connectClusterRef:
+    name: connect-demo
+  configs:
+    couchbase.topic: "test-default"
+    couchbase.seed.nodes: "svc-dqis-node-001.qz70poa8uvuen4yy.cloud.couchbase.com"
+    couchbase.bootstrap.timeout": "10s"
+    couchbase.bucket: "travel-sample"
+    couchbase.username: "Administrator"
+    couchbase.password: "Confluent#123"
+    key.converter: "org.apache.kafka.connect.storage.StringConverter"
+    couchbase.source.handler: "com.couchbase.connect.kafka.handler.source.RawJsonSourceHandler"
+    value.converter: "org.apache.kafka.connect.converters.ByteArrayConverter"
+    couchbase.event.filter: "com.couchbase.connect.kafka.filter.AllPassFilter"
+    couchbase.stream.from: "SAVED_OFFSET_OR_BEGINNING"
+    couchbase.compression: "ENABLED"
+    couchbase.flow.control.buffer: "16m"
+    couchbase.persistence.polling.interval: "100ms"
+    couchbase.collections: "inventory.airline"
+    couchbase.enable.tls: "true"
+    Endpoint 1: "svc-dqis-node-001.qz70poa8uvuen4yy.cloud.couchbase.com:11207:TCP"
+    Endpoint 2: "svc-dqis-node-001.qz70poa8uvuen4yy.cloud.couchbase.com:18091:TCP"
+    value.converter.schema.registry.url: "https://psrc-l6oz3.us-east-2.aws.confluent.cloud"
+    value.converter.basic.auth.credentials.source: "USER_INFO"
+    value.converter.schema.registry.basic.auth.user.info: "ZO54HFZPNKAV26AB:l6N4kk2ScdtXa6x6us7bUvwVAYK6GH+hUhvWDPaGU5jMaLiI+D0QTo6q+HLgrdRU"

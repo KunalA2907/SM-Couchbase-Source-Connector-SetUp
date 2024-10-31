@@ -25,7 +25,7 @@ spec:
             version: 4.2.3
   dependencies:
     kafka:
-      bootstrapEndpoint: pkc-921jm.us-east-2.aws.confluent.cloud:9092
+      bootstrapEndpoint: pkc-xxxxx.us-east-2.aws.confluent.cloud:9092
       authentication:
         type: plain
         jaasConfig:
@@ -34,7 +34,7 @@ spec:
         enabled: true
         ignoreTrustStoreConfig: true
     schemaRegistry:
-      url: https://psrc-l6oz3.us-east-2.aws.confluent.cloud
+      url: https://xxxx-xxxxx.us-east-2.aws.confluent.cloud
       authentication:
         type: basic
         basic:

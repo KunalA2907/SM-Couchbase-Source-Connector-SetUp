@@ -37,7 +37,7 @@ password=schema-registry-api-secret
  <li>Change the cluster bootstrap url and schema registry url below</li>
 </ul>
 
-### 📌  Connect.yaml
+#### 📌 Connect.yaml
 
 ```
 apiVersion: platform.confluent.io/v1beta1
@@ -82,7 +82,7 @@ spec:
         basic:
           secretRef: ccloud-sr-credentials
 ```
-### 📌  Control-Center.yaml
+#### 📌 Control-Center.yaml
 
 ```
 ---

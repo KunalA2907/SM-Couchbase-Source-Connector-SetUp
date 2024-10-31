@@ -17,6 +17,6 @@ spec:
     value.converter.schemas.enable: "true"
     max.interval: "100"
     iterations: "10000000"
-    value.converter.schema.registry.url: "https://psrc-l6oz3.us-east-2.aws.confluent.cloud"
+    value.converter.schema.registry.url: "https://xxxx-xxxxx.us-east-2.aws.confluent.cloud"
     value.converter.basic.auth.credentials.source: "USER_INFO"
-    value.converter.schema.registry.basic.auth.user.info: "ZO54HFZPNKAV26AB:l6N4kk2ScdtXa6x6us7bUvwVAYK6GH+hUhvWDPaGU5jMaLiI+D0QTo6q+HLgrdRU"
+    value.converter.schema.registry.basic.auth.user.info: "SR API Key:SR API Secret"

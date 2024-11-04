@@ -152,8 +152,8 @@ spec:
     couchbase.seed.nodes: **"Node Hostname"**
     couchbase.bootstrap.timeout": "10s"
     couchbase.bucket: **"travel-sample"** ➔ update your bucket name
-    couchbase.username: **"Administrator"**
-    couchbase.password: **"password"**
+    couchbase.username: **"Cluster Usr"**
+    couchbase.password: **"Cluster Pss"**
     key.converter: "org.apache.kafka.connect.storage.StringConverter"
     couchbase.source.handler: "com.couchbase.connect.kafka.handler.source.RawJsonSourceHandler"
     value.converter: "org.apache.kafka.connect.converters.ByteArrayConverter"
@@ -164,8 +164,6 @@ spec:
     couchbase.persistence.polling.interval: "100ms"
     couchbase.collections: "inventory.airline"
     couchbase.enable.tls: "true"
-    Endpoint 1: **"Node Hostname":11207:TCP"** ➔ update as mentioned
-    Endpoint 2: **"Node Hostname":18091:TCP"** ➔ update as mentioned
     value.converter.schema.registry.url: **"https://psrc-xxxx.us-east-2.aws.confluent.cloud"** ➔ update the SR endpoint
     value.converter.basic.auth.credentials.source: "USER_INFO"
     value.converter.schema.registry.basic.auth.user.info: **"ZO54HFZPNKAV26AB:l6N4kk2ScdtXa6x6us7bUvwVAYK6GH+hUhvWDPaGU5jMaLiI+D0QTo6q+HLgrdRU" ** ➔ update as this SR api key: SR password

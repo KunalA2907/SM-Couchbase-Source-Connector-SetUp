@@ -1,15 +1,27 @@
 ## Deploy SM Couchbase Source Connector with Self Managed Kafka Connect Pod on Kubernetes & connect it to Confluent Cloud
 
+
+### 📌 Pre-Requisites:
+
+1. Aws EKS cluster & EBS CSI Driver for K8 which is used to deploy Confluent for Kubernetes have been setup before: https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html
+2. Install and Set Up kubectl on macOS: https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+3. Install Helm3 Charts: https://helm.sh/docs/intro/install/
+
+
+### 📌 Set-Up:
+
 1. Create a Namespace
 ```
- kubectl create ns confluent
+ - kubectl create ns <namespace name>
+ - kubectl config set-context --current --namespace=<namespace name>
 ```
 2. Deploy Confluent for Kubernetes
 
 ```
 - helm repo add confluentinc https://packages.confluent.io/helm
+- helm repo update 
 
-- helm upgrade --install operator confluentinc/confluent-for-kubernetes -n confluent
+- helm upgrade --install operator confluentinc/confluent-for-kubernetes -n <namespace name>
 ``` 
 3. Create file ccloud-credentials.txt containing your cluster api key and secret
 
@@ -26,9 +38,9 @@ password=schema-registry-api-secret
 5. Create Kubernetes Secrets for Confluent Cloud API Key and Confluent Cloud Schema Registry API Key(Replace ./ccloud-credentials.txt and ./ccloud-sr-credentials.txt to your path)
 
 ```
-- kubectl create secret generic ccloud-credentials --from-file=plain.txt=./ccloud-credentials.txt -n confluent
+- kubectl create secret generic ccloud-credentials --from-file=plain.txt=./ccloud-credentials.txt 
 
-- kubectl create secret generic ccloud-sr-credentials --from-file=basic.txt=./ccloud-sr-credentials.txt -n confluent
+- kubectl create secret generic ccloud-sr-credentials --from-file=basic.txt=./ccloud-sr-credentials.txt 
 ```
 6. Create Yaml file for self-managed Kafka Connect connecting to Confluent Cloud(Refer this link) & also for Control Center
 

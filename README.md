@@ -6,6 +6,7 @@
 1. Aws EKS cluster & EBS CSI Driver for K8 which is used to deploy Confluent for Kubernetes have been setup before: https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html
 2. Install and Set Up kubectl on macOS: https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
 3. Install Helm3 Charts: https://helm.sh/docs/intro/install/
+4. Couchbase Cluster - Bucket - Scope - Collections & input Document (Json or Blob Data) is already created before
 
 
 ### 📌 Set-Up:
@@ -144,7 +145,7 @@ spec:
 8. Once it is deployed check the status of the connect cluster using the below command to see whether the connect cluster is running
 
 ```
-kubectl get pods -n confluent
+kubectl get pods -n <namespace name>
 ```
 9. Now for deploying the connector create a file named postgres.yaml and add your postgres configurations. I have shared the sample below. Please refer to the link for all the  configuration parameters .
 ```
@@ -164,8 +165,8 @@ spec:
     couchbase.seed.nodes: **"Node Hostname"**
     couchbase.bootstrap.timeout": "10s"
     couchbase.bucket: **"travel-sample"** ➔ update your bucket name
-    couchbase.username: **"Cluster Usr"**
-    couchbase.password: **"Cluster Pss"**
+    couchbase.username: **"Cluster Usr"** ➔ update your Cluster Username
+    couchbase.password: **"Cluster Pss"** ➔ update your Cluster Password
     key.converter: "org.apache.kafka.connect.storage.StringConverter"
     couchbase.source.handler: "com.couchbase.connect.kafka.handler.source.RawJsonSourceHandler"
     value.converter: "org.apache.kafka.connect.converters.ByteArrayConverter"
@@ -191,7 +192,7 @@ kubectl apply -f couchbase_source_connector.yaml
 </ul>
 
 ```
-kubectl port-forward controlcenter-0 -n confluent 9021:9021
+kubectl port-forward controlcenter-0 -n <namespace name> 9021:9021
 ```
 12. At the end, you can visit your Confluent Cloud Cluster and observe that the topic named "test-default" has been automatically created. It is receiving data from the Scope.Collections ~ inventory.airlines.
 

@@ -195,4 +195,17 @@ kubectl port-forward controlcenter-0 -n confluent 9021:9021
 ```
 12. At the end, you can visit your Confluent Cloud Cluster and observe that the topic named "test-default" has been automatically created. It is receiving data from the Scope.Collections ~ inventory.airlines.
 
+13. Tear Down
+    
+<ul>
+<li>Shut down Confluent Platform and the data:</li>
+</ul>
+
+```
+kubectl delete -f connect.yaml
+kubectl delete -f Control-Center.yaml
+helm delete operator
+
+```
+
  

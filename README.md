@@ -147,7 +147,7 @@ spec:
 ```
 kubectl get pods -n <namespace name>
 ```
-9. Now for deploying the connector create a file named postgres.yaml and add your postgres configurations. I have shared the sample below. Please refer to the link for all the  configuration parameters .
+9. Now for deploying the connector create a file named postgres.yaml and add your Couchbase configurations. I have shared the sample below. Please refer to the link for all the  configuration parameters .
 ```
 ---
 apiVersion: platform.confluent.io/v1beta1
